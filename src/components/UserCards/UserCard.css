@@ -1,0 +1,32 @@
+.card {
+  background-color: #ffffff;
+}
+
+.img-card {
+  align-items: center;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  justify-content: center;
+  margin: 10px;
+  width: 40%;
+}
+
+.img-small {
+  height: 70%;
+  padding: 5px;
+}
+
+.user-card__text-holder {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 90%;
+}
+
+.user-card__text-age {
+  color: #808080;
+  font-size: 80%;
+}

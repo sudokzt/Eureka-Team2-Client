@@ -1,0 +1,41 @@
+.img-full {
+  width: 50%;
+  margin: auto;
+}
+
+.fixed-btn {
+  bottom: 3%;
+  left: 10%;
+  position: fixed;
+}
+
+.partner-profile__card {
+  border-radius: 6px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  margin-bottom: 20%;
+  padding: 20px;
+}
+
+.partner-profile__brief {
+  margin-bottom: 20px;
+}
+
+.partner-profile__brief p,
+.partner-profile__brief h3 {
+  margin: 10px 0 10px 0;
+}
+
+.partner-profile__brief p {
+  font-size: 80%;
+}
+
+.partner-profile__intro {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.partner-profile__intro p {
+  color: #808080;
+  font-size: 80%;
+}
