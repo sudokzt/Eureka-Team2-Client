@@ -1,0 +1,30 @@
+.text-btn {
+  background-color: #d46673;
+  border: 1px solid #d46673;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.btn-holder-horizontal {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.approached__btn {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+}
+
+.icon-btn {
+  width: 40px;
+}

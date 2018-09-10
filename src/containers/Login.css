@@ -1,0 +1,29 @@
+.login-card {
+  align-items: center;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  position: absolute;
+  top: 30%;
+  width: 80%;
+}
+
+.login__label {
+  text-align: left;
+  margin-left: 5%;
+}
+
+.login__input-text {
+  padding: 2% 5% !important;
+  width: 80%;
+}
+
+.login__text-btn {
+  margin: 20px 0;
+  width: 90%;
+}

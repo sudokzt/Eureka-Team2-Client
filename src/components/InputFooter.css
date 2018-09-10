@@ -1,0 +1,56 @@
+.message-form {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.message-form__item {
+  margin: 0 6px 0 6px;
+  display: flex;
+}
+
+.talk-footer__icon-btn {
+  border: none;
+  height: 30px;
+  margin: 2px 4px 2px 4px;
+  padding: 0;
+  padding-left: 30px;
+}
+
+.input-text {
+  border: 1px solid #CCCCCC;
+  border-radius: 6px;
+  padding: 6px;
+}
+
+.message-form__input-text {
+  width: 100%;
+}
+
+.message-form__gallery-holder {
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.message-form__input-holder {
+  flex-grow: 2;
+  justify-content: center;
+}
+
+.message-form__send-holder {
+  flex-grow: 1;
+  justify-content: flex-start;
+}
+
+.talk-footer__icon-btn__camera {
+  background: url('../images/camera-btn.svg') no-repeat;
+}
+
+.talk-footer__icon-btn__send {
+  background: url('../images/send-btn.svg') no-repeat;
+}
+
+.talk-footer__icon-btn__gallery {
+  background: url('../images/gallery-btn.svg') no-repeat;
+}

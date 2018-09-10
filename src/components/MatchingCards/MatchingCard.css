@@ -1,0 +1,32 @@
+.matching-card {
+  align-items: center;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  height: 30%;
+  margin: 20px;
+  padding: 10px;
+}
+
+.matching-card__img-holder {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.matching-card__img {
+  width: 100%;
+}
+
+.matching-card__text-holder {
+  flex: 3;
+  text-align: left;
+}
+
+.matching-card__text-holder p {
+  margin: 10px 0 10px 0;
+}
+
+.maching-card__text-holder__intro {
+  color: #808080;
+  font-size: 80%;
+}

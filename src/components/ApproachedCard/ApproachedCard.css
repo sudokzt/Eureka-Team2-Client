@@ -1,0 +1,21 @@
+.approached-card {
+  border-radius: 6px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  height: 60%;
+}
+
+.approached-card__img-holder {
+  background-color: #cecece;
+  border-radius: 6px 6px 0 0;
+  height: 240px;
+}
+
+.approached-card__img {
+  height: 100%;
+}
+
+.approached-card p
+.approached-card h3 {
+  margin: 10px;
+}

@@ -1,0 +1,35 @@
+.footer {
+  background-color: #ffffff;
+  box-shadow: 0 -1px 12px 0 rgba(0, 0, 0, 0.2);
+  bottom: -1px;
+  margin: auto;
+  position: fixed;
+  width: 100%;
+}
+
+.footer ul {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+.footer li {
+  display: inline-block;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.above-footer {
+  margin-bottom: 60px;
+}
+
+.footer__btn {
+  width: 30px;
+}

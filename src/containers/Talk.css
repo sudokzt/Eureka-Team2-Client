@@ -1,0 +1,54 @@
+.talk__messages-holder {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.talk__message-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 5px 10px;
+}
+
+.talk__message-container__text {
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  max-width: 70%;
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.talk__message-container__avatar-holder {
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 10px;
+}
+
+.talk__message-container__avatar {
+  height: 70%;
+}
+
+.talk__message-container-right {
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.talk__message-container-left {
+  align-self: flex-start;
+  justify-content: flex-start;
+}
+
+.talk__message-container__text-left {
+  background-color: #808080;
+  color: #ffffff;
+}
