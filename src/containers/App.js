@@ -45,7 +45,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/zero-crasher/:id/loading"
+              path="/zero-crasher/loading"
               component={ZeroCrasherLoading}
             />
             <Route exact path="/zero-crasher/:id" component={ZeroCrasher} />
