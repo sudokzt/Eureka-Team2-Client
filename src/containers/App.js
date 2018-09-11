@@ -9,9 +9,9 @@ import Matching from './Matching';
 import MatchSucceeded from './MatchSucceeded';
 import Talk from './Talk';
 import PartnerProfile from './PartnerProfile';
-import AffinityTalkTutorial from './AffinityTalkTutorial';
-import AffinityTalkLoading from './AffinityTalkLoading';
-import AffinityTalk from './AffinityTalk';
+import ZeroCrasherTutorial from './ZeroCrasherTutorial';
+import ZeroCrasherLoading from './ZeroCrasherLoading';
+import ZeroCrasher from './ZeroCrasher';
 
 // Set global variables to store ID and token.
 window.USER_ID = null;
@@ -40,15 +40,15 @@ class App extends Component {
             />
             <Route
               exact
-              path="/affinity-talk/tutorial/"
-              component={AffinityTalkTutorial}
+              path="/zero-crasher/tutorial"
+              component={ZeroCrasherTutorial}
             />
             <Route
               exact
-              path="/affinity-talk/:id/loading"
-              component={AffinityTalkLoading}
+              path="/zero-crasher/:id/loading"
+              component={ZeroCrasherLoading}
             />
-            <Route exact path="/affinity-talk/:id" component={AffinityTalk} />
+            <Route exact path="/zero-crasher/:id" component={ZeroCrasher} />
             <Redirect from="/" to="/login" />
           </Switch>
         </div>
