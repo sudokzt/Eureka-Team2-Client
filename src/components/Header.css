@@ -11,6 +11,17 @@
   width: 100%;
 }
 
+.timer__header {
+  align-content: center;
+  background-color: #448c80;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .header h3 {
   margin: 10px;
   margin-left: 20px;
