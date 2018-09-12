@@ -1,0 +1,11 @@
+.modal-content-fullscreen {
+  background-color: #fefefe;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  height: auto;
+  margin: 5%;
+  margin-top: 30%;
+  padding: 5%;
+  position: fixed;
+  width: 80%;
+}
