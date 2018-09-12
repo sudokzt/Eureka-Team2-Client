@@ -12,6 +12,7 @@ import PartnerProfile from './PartnerProfile';
 import ZeroCrasherTutorial from './ZeroCrasherTutorial';
 import ZeroCrasherLoading from './ZeroCrasherLoading';
 import ZeroCrasher from './ZeroCrasher';
+import ZeroCrasherPartnerInfo from './ZeroCrasherPartnerInfo';
 
 // Set global variables to store ID and token.
 window.USER_ID = null;
@@ -47,6 +48,11 @@ class App extends Component {
               exact
               path="/zero-crasher/loading"
               component={ZeroCrasherLoading}
+            />
+            <Route
+              exact
+              path="/zero-crasher/partner-info"
+              component={ZeroCrasherPartnerInfo}
             />
             <Route exact path="/zero-crasher/:id" component={ZeroCrasher} />
             <Redirect from="/" to="/login" />
