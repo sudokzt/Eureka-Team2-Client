@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import "./Header.css";
-import logoutBtn from "../images/logout-btn.svg";
+import './Header.css';
+import logoutBtn from '../images/logout-btn-gray.svg';
 
 const Header = props => {
   let currentPage = null;
@@ -11,7 +11,7 @@ const Header = props => {
   }
 
   let logout = null;
-  if (currentPage !== "Login") {
+  if (currentPage === 'Search') {
     logout = (
       <Link to="/login" className="header__btn-holder">
         <img src={logoutBtn} alt="log out" className="header__btn" />
