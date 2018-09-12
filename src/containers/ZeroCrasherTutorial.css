@@ -1,0 +1,23 @@
+.crasher-tutorial__guide-holder {
+  margin-top: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.crasher-tutorial__guide-holder p {
+  font-weight: bold;
+}
+
+.crasher-tutorial__button {
+  background-color: #75d0d4;
+  border: none;
+  border-radius: 100px;
+  bottom: 18%;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  left: 15%;
+  width: 70%;
+  padding: 10px;
+  position: fixed;
+}
