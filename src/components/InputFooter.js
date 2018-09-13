@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import "./InputFooter.css";
+import './InputFooter.css';
 
 class InputFooter extends Component {
   state = {
-    inputText: ""
+    inputText: ''
   };
 
   handleInputChange = event => {
@@ -19,7 +19,7 @@ class InputFooter extends Component {
     this.props.onSend(this.state.inputText);
 
     // Clear the input box.
-    this.setState({ inputText: "" });
+    this.setState({ inputText: '' });
   };
 
   render() {
@@ -42,7 +42,7 @@ class InputFooter extends Component {
           </div>
           <div className="message-form__item message-form__input-holder">
             <input
-              type="text"
+              type="textarea"
               onChange={this.handleInputChange}
               value={this.state.inputText}
               placeholder="Write something..."

@@ -24,7 +24,7 @@ class ZeroCrasher extends Component {
 
   // 3 minute Timer
   countup = () => {
-    if (this.state.timeLimit < 0) return;
+    if (this.state.timeLimit <= 0) return;
     setTimeout(this.countup, 1000);
     this.setState({
       timeLimit: this.state.timeLimit - 1
@@ -284,10 +284,26 @@ class ZeroCrasher extends Component {
       });
     }
 
-    if (this.state.timeLimit < 0) {
+    if (this.state.timeLimit <= 0) {
       return (
         <div>
+          {redirect}
+          <Header currentPage="ZeroCrasher" timeLimit={this.state.timeLimit} />
           <TalkOverModal />
+          <div className="under-header above-footer talk__messages-holder">
+            <LoadMore
+              onLoadMore={this.handleLoadMore}
+              fetchStatus={
+                this.state.messages !== null && !this.state.loadedAll
+              }
+            />
+            {messages}
+          </div>
+          <ZeroCrasherInputFooter
+            onSend={this.handleSend}
+            onOpenGallery={this.handleOpenGallery}
+          />
+          <SendImageModal onSend={this.handleSendImage} />
         </div>
       );
     }
