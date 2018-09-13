@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import { Redirect, Link } from 'react-router-dom';
 
-import Footer from "../components/Footer";
-import UserCards from "../components/UserCards/UserCards";
-import Header from "../components/Header";
-import LoadMore from "../components/LoadMore";
+import './Search.css';
+import Footer from '../components/Footer';
+import UserCards from '../components/UserCards/UserCards';
+import Header from '../components/Header';
+import LoadMore from '../components/LoadMore';
 
 // Set data fetching limit.
 const LIMIT = 10;
@@ -24,9 +25,9 @@ class Search extends Component {
           window.USER_TOKEN
         }&limit=${LIMIT}&offset=0`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
-            Accept: "application/json"
+            Accept: 'application/json'
           }
         }
       )
@@ -60,9 +61,9 @@ class Search extends Component {
           window.USER_TOKEN
         }&limit=${LIMIT}&offset=${offset}`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
-            Accept: "application/json"
+            Accept: 'application/json'
           }
         }
       )
@@ -87,7 +88,7 @@ class Search extends Component {
           console.log(error);
         });
     } else {
-      console.log("No more data to load.");
+      console.log('No more data to load.');
     }
   };
 
@@ -96,7 +97,7 @@ class Search extends Component {
     // Redirect to LOGIN pge if use token is not provided.
     if (window.USER_TOKEN === null) {
       redirect = <Redirect to="/login" />;
-      console.log("Redirecting to Login...");
+      console.log('Redirecting to Login...');
     }
 
     return (
@@ -104,6 +105,11 @@ class Search extends Component {
         {redirect}
         <Header currentPage="Search" />
         <div className="under-header above-footer">
+          <Link to="/zero-crasher/tutorial/">
+            <button className="search__full-width-button">
+              ランダムトーク
+            </button>
+          </Link>
           <UserCards users={this.state.users} />
           <LoadMore
             onLoadMore={this.handleLoadMore}

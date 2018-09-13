@@ -1,7 +1,7 @@
 .login-card {
   align-items: center;
   border-radius: 6px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  border: 0.7px solid #cfcfcf;
   display: flex;
   flex-direction: column;
   height: 30%;
@@ -14,16 +14,24 @@
 }
 
 .login__label {
+  color: #4a4a4a;
+  font-weight: 300;
   text-align: left;
   margin-left: 5%;
 }
 
 .login__input-text {
+  border-radius: 50px !important;
   padding: 2% 5% !important;
   width: 80%;
 }
 
 .login__text-btn {
+  background-color: #75d0d4 !important;
+  border: none !important;
+  border-radius: 50px !important;
+  border: none;
+  box-shadow: none !important;
   margin: 20px 0;
   width: 90%;
 }

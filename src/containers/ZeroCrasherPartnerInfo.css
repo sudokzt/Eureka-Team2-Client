@@ -1,0 +1,50 @@
+.crasher-info__holder {
+  margin-top: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.crasher-info__guide-holder {
+  text-align: left;
+  color: #4a4a4a;
+}
+
+.crasher-info__guide-holder h2 {
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.crasher-info__affinity-holder {
+  color: #ff9497;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.inline-icon {
+  width: 0.8em;
+}
+
+.crasher-info__common-points-guide {
+  align-items: center;
+  color: #4a4a4a;
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.crasher-info__common-points-guide-icon {
+  margin-right: 20px;
+  width: 100px;
+}
+
+.crasher-info__common-points-item {
+  color: #9b9b9b;
+  margin: 30px;
+  font-weight: 300;
+  font-size: 1.2em;
+}
+
+.crasher-info__common-points-item-emphasize {
+  color: #75d0d4;
+}

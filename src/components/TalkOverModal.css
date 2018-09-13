@@ -1,0 +1,51 @@
+.modal-content-fullscreen {
+  background-color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  height: auto;
+  margin: 5%;
+  margin-top: 30%;
+  padding: 8% 5%;
+  position: fixed;
+  width: 80%;
+}
+
+.modal-content-fullscreen h3 {
+  margin-top: 0;
+}
+
+.talk-over-modal__counter {
+  color: #fe727d;
+}
+
+.talk-over-modal__like-button {
+  background-image: linear-gradient(to right, #ff9699, #fe6f7a);
+  border: none;
+  border-radius: 100px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 12px 30px 12px 30px;
+  width: 82%;
+  padding: 16px;
+}
+
+.talk-over-modal__liked-button {
+  background-image: linear-gradient(to right, #ffac51, #ff9643);
+}
+
+.talk-ver-modal__inline-icon {
+  width: 13px;
+  margin-right: 6px;
+}
+
+.talk-over-modal__home-link {
+  color: #75d0d4;
+  font-size: 13px;
+}
+
+.time-up-modal__button-contaier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
