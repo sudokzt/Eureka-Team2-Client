@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 
+import './Search.css';
 import Footer from '../components/Footer';
 import UserCards from '../components/UserCards/UserCards';
 import Header from '../components/Header';
@@ -105,7 +106,9 @@ class Search extends Component {
         <Header currentPage="Search" />
         <div className="under-header above-footer">
           <Link to="/zero-crasher/tutorial/">
-            <button className="text-btn single-line-btn">相性トーク</button>
+            <button className="search__full-width-button">
+              ランダムトーク
+            </button>
           </Link>
           <UserCards users={this.state.users} />
           <LoadMore
