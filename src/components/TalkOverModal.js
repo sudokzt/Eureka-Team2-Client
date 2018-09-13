@@ -11,7 +11,7 @@ class TalkOverModal extends Component {
 
   // 「いいね」をクリックすればスタイルを変える
   handleLike = () => {
-    this.setState({ isLiked: true });
+    this.setState({ isLiked: this.state.isLiked ? false : true });
   };
 
   render() {
@@ -52,7 +52,9 @@ class TalkOverModal extends Component {
           <h3>タイムアップ</h3>
           <h1 className="talk-over-modal__counter">0:00</h1>
           <p>
-            Nipperさんともっと話してみたい！と感じたらいいね！を押しましょう！
+            Nipperさんともっと話してみたい！
+            <br />
+            と感じたらいいね！を押しましょう！
           </p>
           <div className="time-up-modal__button-contaier">
             {likeButton}

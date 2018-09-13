@@ -14,7 +14,7 @@
 }
 
 .talk__message-container__text {
-  background-color: #ffffff;
+  background-color: #93dce4;
   border-radius: 6px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
   max-width: 70%;
@@ -50,5 +50,10 @@
 
 .talk__message-container__text-left {
   background-color: #808080;
+  color: #ffffff;
+}
+
+.talk__message-container__text-right {
+  background-color: #93dce4;
   color: #ffffff;
 }

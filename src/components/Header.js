@@ -28,7 +28,7 @@ const Header = props => {
     let min = ('00' + Math.floor(timeLimit / 60)).slice(-2);
     let sec = ('00' + (timeLimit % 60)).slice(-2);
     return (
-      <div className="timer__header">
+      <div className="header">
         <h3>
           {min}:{sec}
         </h3>

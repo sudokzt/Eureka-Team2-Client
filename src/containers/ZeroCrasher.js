@@ -7,6 +7,7 @@ import ZeroCrasherInputFooter from '../components/ZeroCrasherInputFooter';
 import LoadMore from '../components/LoadMore';
 import SendImageModal from '../components/SendImageModal';
 import TalkOverModal from '../components/TalkOverModal';
+import ZeroCrasherBanner from '../components/ZeroCrasherBanner';
 
 // Set data fetching limit.
 const LIMIT = 10;
@@ -19,7 +20,7 @@ class ZeroCrasher extends Component {
     loadCounter: 0,
     loadedAll: false,
     currentLimit: 0,
-    timeLimit: 180
+    timeLimit: 3
   };
 
   // 3 minute Timer
@@ -91,6 +92,7 @@ class ZeroCrasher extends Component {
           console.log(error);
         });
     }
+    // this.countup();
   }
 
   // Always scroll to the bottom when compoent updates.
@@ -287,10 +289,13 @@ class ZeroCrasher extends Component {
     if (this.state.timeLimit <= 0) {
       return (
         <div>
-          {redirect}
+          {/* {redirect} */}
           <Header currentPage="ZeroCrasher" timeLimit={this.state.timeLimit} />
           <TalkOverModal />
-          <div className="under-header above-footer talk__messages-holder">
+          <div className="under-header above-footer">
+            <div className="talk__message-holder">
+              <ZeroCrasherBanner />
+            </div>
             <LoadMore
               onLoadMore={this.handleLoadMore}
               fetchStatus={
@@ -310,9 +315,12 @@ class ZeroCrasher extends Component {
 
     return (
       <div>
-        {redirect}
+        {/* {redirect} */}
         <Header currentPage="ZeroCrasher" timeLimit={this.state.timeLimit} />
-        <div className="under-header above-footer talk__messages-holder">
+        <div className="under-header above-footer">
+          <div className="talk__message-holder">
+            <ZeroCrasherBanner />
+          </div>
           <LoadMore
             onLoadMore={this.handleLoadMore}
             fetchStatus={this.state.messages !== null && !this.state.loadedAll}

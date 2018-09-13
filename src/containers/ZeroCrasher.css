@@ -14,12 +14,14 @@
 }
 
 .talk__message-container__text {
-  background-color: #ffffff;
+  background-color: #93dce4;
   border-radius: 6px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  color: #383838;
   max-width: 70%;
   padding: 6px 10px;
   text-align: left;
+  word-break: break-all;
 }
 
 .talk__message-container__avatar-holder {
@@ -49,6 +51,6 @@
 }
 
 .talk__message-container__text-left {
-  background-color: #808080;
-  color: #ffffff;
+  background-color: #d8d8d8;
+  color: #383838;
 }
