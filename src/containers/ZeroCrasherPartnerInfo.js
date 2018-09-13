@@ -30,7 +30,7 @@ class ZeroCrasherPartnerInfo extends Component {
                   alt="User Icon"
                   className="crasher-info__common-points-guide-icon"
                 />
-                <span>Nipperさんとの共通点はこちらです！</span>
+                <span>Nipperさんとの共通点は<br />こちらです！</span>
               </div>
               <div className="crasher-info__common-points-item">
                 <span className="crasher-info__common-points-item-emphasize">
