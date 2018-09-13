@@ -1,13 +1,16 @@
 .crasher__banner {
   background-color: #f6f6f6;
   padding: 5px 0 5px 0;
-  margin-top: -10px;
+  position: fixed;
+  /* margin-top: -10px; */
+  top: 50px;
   width: 100%;
+  z-index: 0;
 }
 
 .crasher__banner h3 {
   font-size: 1em;
-  font-weight: 300;
+  font-weight: 500;
   color: #9b9b9b;
   margin-top: 6px;
   margin-bottom: 6px;
@@ -22,7 +25,7 @@
 .crasher__banner-contents-item {
   border-radius: 6px;
   color: #75d0d4;
-  font-weight: 200;
+  font-weight: 400;
   font-size: 0.9em;
   margin: 5px 10px;
   padding: 5px 10px;

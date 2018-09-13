@@ -15,7 +15,7 @@ const Header = props => {
   }
 
   let logout = null;
-  if (currentPage === 'Search') {
+  if (currentPage === 'さがす') {
     logout = (
       <Link to="/login" className="header__btn-holder">
         <img src={logoutBtn} alt="log out" className="header__btn" />
