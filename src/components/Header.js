@@ -9,6 +9,10 @@ const Header = props => {
   if (props.currentPage) {
     currentPage = props.currentPage;
   }
+  let timeLimit = 0;
+  if (props.timeLimit) {
+    timeLimit = Number(props.timeLimit);
+  }
 
   let logout = null;
   if (currentPage === 'Search') {
@@ -19,12 +23,25 @@ const Header = props => {
     );
   }
 
-  return (
-    <div className="header">
-      <h3>{currentPage}</h3>
-      {logout}
-    </div>
-  );
+  if (currentPage === 'ZeroCrasher') {
+    // timer
+    let min = ('00' + Math.floor(timeLimit / 60)).slice(-2);
+    let sec = ('00' + (timeLimit % 60)).slice(-2);
+    return (
+      <div className="timer__header">
+        <h3>
+          {min}:{sec}
+        </h3>
+      </div>
+    );
+  } else {
+    return (
+      <div className="header">
+        <h3>{currentPage}</h3>
+        {logout}
+      </div>
+    );
+  }
 };
 
 export default Header;
