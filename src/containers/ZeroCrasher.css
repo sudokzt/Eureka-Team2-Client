@@ -14,28 +14,30 @@
 }
 
 .talk__message-container__text {
-  background-color: #ffffff;
+  background-color: #93dce4;
   border-radius: 6px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2); */
+  color: #383838;
   max-width: 70%;
   padding: 6px 10px;
   text-align: left;
+  word-break: break-all;
 }
 
 .talk__message-container__avatar-holder {
   align-items: center;
   background-color: #ffffff;
   border-radius: 50%;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2); */
   display: flex;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   margin: 0 10px;
 }
 
 .talk__message-container__avatar {
-  height: 70%;
+  height: 100%;
 }
 
 .talk__message-container-right {
@@ -49,6 +51,6 @@
 }
 
 .talk__message-container__text-left {
-  background-color: #808080;
-  color: #ffffff;
+  background-color: #d8d8d8;
+  color: #383838;
 }

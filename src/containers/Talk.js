@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
-import "./Talk.css";
-import Header from "../components/Header";
-import InputFooter from "../components/InputFooter";
-import LoadMore from "../components/LoadMore";
-import SendImageModal from "../components/SendImageModal";
+import './Talk.css';
+import Header from '../components/Header';
+import InputFooter from '../components/InputFooter';
+import LoadMore from '../components/LoadMore';
+import SendImageModal from '../components/SendImageModal';
+import userIcon from '../images/zero-crasher-user.svg';
 
 // Set data fetching limit.
 const LIMIT = 10;
@@ -29,9 +30,9 @@ class Talk extends Component {
             window.USER_TOKEN
           }`,
           {
-            method: "GET",
+            method: 'GET',
             headers: {
-              Accept: "application/json"
+              Accept: 'application/json'
             }
           }
         ).then(response => response.json()),
@@ -40,9 +41,9 @@ class Talk extends Component {
             this.props.match.params.id
           }?token=${window.USER_TOKEN}`,
           {
-            method: "GET",
+            method: 'GET',
             headers: {
-              Accept: "application/json"
+              Accept: 'application/json'
             }
           }
         ).then(response => response.json()),
@@ -51,9 +52,9 @@ class Talk extends Component {
             this.props.match.params.id
           }?token=${window.USER_TOKEN}&limit=${LIMIT}`,
           {
-            method: "GET",
+            method: 'GET',
             headers: {
-              Accept: "application/json"
+              Accept: 'application/json'
             }
           }
         ).then(response => response.json())
@@ -103,11 +104,11 @@ class Talk extends Component {
         this.props.match.params.id
       }`,
       {
-        method: "POST",
-        mode: "cors",
+        method: 'POST',
+        mode: 'cors',
         headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           token: window.USER_TOKEN,
@@ -127,12 +128,12 @@ class Talk extends Component {
 
   // Open the modal for sending image url (will be sent in Markdown).
   handleOpenGallery = () => {
-    document.getElementById("sendImageModal").style.display = "block";
+    document.getElementById('sendImageModal').style.display = 'block';
   };
 
   handleSendImage = message => {
     // Create a message object only for displaying.
-    const imageMessage = "![image](" + message + ")";
+    const imageMessage = '![image](' + message + ')';
     const currentDate = new Date();
     const messageObj = {
       created_at: currentDate.toISOString(),
@@ -148,11 +149,11 @@ class Talk extends Component {
         this.props.match.params.id
       }`,
       {
-        method: "POST",
-        mode: "cors",
+        method: 'POST',
+        mode: 'cors',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           token: window.USER_TOKEN,
@@ -180,9 +181,9 @@ class Talk extends Component {
           this.props.match.params.id
         }?token=${window.USER_TOKEN}&limit=${moreLimit}`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
-            Accept: "application/json"
+            Accept: 'application/json'
           }
         }
       )
@@ -211,7 +212,7 @@ class Talk extends Component {
           console.log(error);
         });
     } else {
-      console.log("No more data to load.");
+      console.log('No more data to load.');
     }
   };
 
@@ -220,7 +221,7 @@ class Talk extends Component {
     // Redirect to LOGIN page if use token is not provided.
     if (window.USER_TOKEN === null) {
       redirect = <Redirect to="/login" />;
-      console.log("Redirecting to Login...");
+      console.log('Redirecting to Login...');
     }
 
     let messages = <p>Loading...</p>;
@@ -252,7 +253,7 @@ class Talk extends Component {
             >
               <div className="talk__message-container__avatar-holder">
                 <img
-                  src={this.state.matching.image_uri}
+                  src={userIcon}
                   alt={this.state.matching.nickname}
                   className="talk__message-container__avatar"
                 />

@@ -33,3 +33,34 @@
 .footer__btn {
   width: 30px;
 }
+
+.crasher__footer {
+  background-color: #ffffff;
+  box-shadow: none;
+}
+
+.crasher__form-holder {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.crasher__input-textarea {
+  flex-grow: 3;
+  background-color: #ffffff;
+  border: 0.5px solid #9f9f9f;
+  border-radius: 50px;
+}
+
+.crasher__send-holder {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.crasher__input-textarea-textbox {
+  border: none;
+  height: 18px;
+  margin-top: 5px;
+  width: 85%;
+}
