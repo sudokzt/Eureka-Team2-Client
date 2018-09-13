@@ -103,7 +103,7 @@ class Search extends Component {
     return (
       <div>
         {redirect}
-        <Header currentPage="Search" />
+        <Header currentPage="さがす" />
         <div className="under-header above-footer">
           <Link to="/zero-crasher/tutorial/">
             <button className="search__full-width-button">
