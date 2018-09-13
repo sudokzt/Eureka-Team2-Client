@@ -12,8 +12,8 @@ class ZeroCrasherTutorial extends Component {
       <div>
         <Header currentPage="ランダムトーク" />
         <div className="under-header above-footer crasher-tutorial__guide-holder">
-          {/* <h1>Image Here</h1> */}
           <img src={ZeroClasherLogo} alt="ZeroClasherLogo" className="" />
+          {/* <h1>Image Here</h1> */}
           <p>
             ランダムトークはあなたと相性度が50%以上の人を自動的にマッチングして3分間だけトークできる機能です
           </p>
