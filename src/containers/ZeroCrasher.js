@@ -196,7 +196,7 @@ class ZeroCrasher extends Component {
       console.log('Redirecting to Login...');
     }
 
-    let messages = <p>Loading...</p>;
+    let messages = <p className="crasher__loading-indicator">Loading...</p>;
     if (this.state.messages) {
       messages = this.state.messages.map(message => {
         if (message.user_id.toString() === window.USER_ID) {

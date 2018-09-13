@@ -13,6 +13,10 @@
   flex-direction: column-reverse;
 }
 
+.crasher__loading-indicator {
+  color: #808080;
+}
+
 .talk__message-container {
   align-items: center;
   display: flex;
