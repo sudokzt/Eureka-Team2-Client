@@ -20,7 +20,7 @@ class ZeroCrasher extends Component {
     messages: null,
     loadCounter: 0,
     loadedAll: false,
-    currentLimit: 0,
+    currentLimit: LIMIT,
     timeLimit: 100
   };
 
@@ -37,7 +37,7 @@ class ZeroCrasher extends Component {
       fetch(
         `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch/messages/${
           this.props.match.params.id
-        }?token=${window.USER_TOKEN}&limit=${LIMIT}`,
+        }?token=${window.USER_TOKEN}&limit=${this.state.currentLimit}`,
         {
           method: 'GET',
           headers: {
@@ -47,26 +47,16 @@ class ZeroCrasher extends Component {
       )
         .then(response => response.json())
         .then(data => {
-          console.log('Got messages data:', data, this.state.messages);
-          console.log(
-            'data == this.state.messages?:',
-            data === this.state.messages
-          );
-          // Sort messages data by created_at.
-          data.sort(
-            (message1, message2) =>
-              message1.created_at > message2.created_at ? 1 : -1
-          );
-
-          if (data !== this.state.messages) {
+          if (data.length > this.state.messages.length) {
             this.setState({
               messages: data
             });
+            console.log(data.length, this.state.messages.length);
           }
 
-          // if (data.length === 0 || data.length < LIMIT) {
-          //   this.setState({ loadedAll: true });
-          // }
+          if (data.length === 0 || data.length < LIMIT) {
+            this.setState({ loadedAll: true });
+          }
         })
         .catch(error => {
           console.log(error);
@@ -74,7 +64,7 @@ class ZeroCrasher extends Component {
     }
   };
 
-  // Get messages.
+  // Get messages when component mounted.
   componentDidMount() {
     console.log('[componentDidMount()] USER_TOKEN:', window.USER_TOKEN);
 
@@ -93,17 +83,16 @@ class ZeroCrasher extends Component {
         .then(response => response.json())
         .then(data => {
           console.log(data);
-          // Sort messages data by created_at.
-          data.sort(
-            (message1, message2) =>
-              message1.created_at > message2.created_at ? 1 : -1
+
+          this.setState(
+            {
+              messages: data
+            },
+            () => {
+              window.scrollTo(0, document.body.scrollHeight);
+              console.log('Scrolled to bottom.');
+            }
           );
-
-          this.setState({
-            messages: data
-          });
-
-          window.scrollTo(0, document.body.scrollHeight);
 
           if (data.length === 0 || data.length < LIMIT) {
             this.setState({ loadedAll: true });
@@ -114,13 +103,7 @@ class ZeroCrasher extends Component {
           console.log(error);
         });
     }
-    // this.countup();
   }
-
-  // Always scroll to the bottom when compoent updates.
-  // componentDidUpdate() {
-  //   window.scrollTo(0, document.body.scrollHeight);
-  // }
 
   handleSend = message => {
     // Create a message object only for displaying.
@@ -155,17 +138,15 @@ class ZeroCrasher extends Component {
     });
 
     const messages = this.state.messages;
-    messages.push(messageObj);
-    this.setState({
-      messages: messages
-    });
-
-    window.scrollTo(0, document.body.scrollHeight);
-  };
-
-  // Open the modal for sending image url (will be sent in Markdown).
-  handleOpenGallery = () => {
-    document.getElementById('sendImageModal').style.display = 'block';
+    messages.unshift(messageObj);
+    this.setState(
+      {
+        messages: messages
+      },
+      () => {
+        window.scrollTo(0, document.body.scrollHeight);
+      }
+    );
   };
 
   handleLoadMore = () => {
@@ -186,12 +167,6 @@ class ZeroCrasher extends Component {
       )
         .then(response => response.json())
         .then(data => {
-          // Sort data by created_at.
-          data.sort(
-            (message1, message2) =>
-              message1.created_at > message2.created_at ? 1 : -1
-          );
-
           this.setState({
             messages: data,
             loadCounter: this.state.loadCounter + 1,
@@ -232,13 +207,6 @@ class ZeroCrasher extends Component {
               className="talk__message-container talk__message-container-right"
             >
               <p className="talk__message-container__text">{message.message}</p>
-              {/* <div className="talk__message-container__avatar-holder">
-                <img
-                  src={this.state.user.image_uri}
-                  alt="Partner Icon"
-                  className="talk__message-container__avatar"
-                />
-              </div> */}
             </div>
           );
         } else if (message.user_id.toString() === this.props.match.params.id) {
@@ -285,7 +253,7 @@ class ZeroCrasher extends Component {
                   this.state.messages !== null && !this.state.loadedAll
                 }
               />
-              {messages}
+              <div className="crasher__messages-text-holder">{messages}</div>
             </div>
           </div>
           <ZeroCrasherInputFooter
@@ -315,7 +283,7 @@ class ZeroCrasher extends Component {
                 this.state.messages !== null && !this.state.loadedAll
               }
             />
-            {messages}
+            <div className="crasher__messages-text-holder">{messages}</div>
           </div>
         </div>
         <ZeroCrasherInputFooter
