@@ -33,8 +33,8 @@ class ZeroCrasherInputFooter extends Component {
             <textarea
               onChange={this.handleInputChange}
               value={this.state.inputText}
-              placeholder="一緒に世界変えてみん？"
-              className="input-text message-form__input-text crasher__input-textarea-textbox"
+              placeholder="メッセージを入力"
+              className="crasher__input-textarea-textbox"
               required
             />
           </div>

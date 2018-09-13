@@ -16,8 +16,8 @@
 .talk__message-container__text {
   background-color: #93dce4;
   border-radius: 6px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
-  max-width: 70%;
+  /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2); */
+  max-width: 100%;
   padding: 6px 10px;
   text-align: left;
 }
@@ -26,7 +26,7 @@
   align-items: center;
   background-color: #ffffff;
   border-radius: 50%;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2); */
   display: flex;
   justify-content: center;
   width: 36px;

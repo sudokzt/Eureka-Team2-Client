@@ -35,8 +35,8 @@
 }
 
 .crasher__footer {
-  background-color: #93dce4;
-  box-shadow: 0 -1px 6px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  box-shadow: none;
 }
 
 .crasher__form-holder {
@@ -46,6 +46,9 @@
 
 .crasher__input-textarea {
   flex-grow: 3;
+  background-color: #ffffff;
+  border: 0.5px solid #9f9f9f;
+  border-radius: 50px;
 }
 
 .crasher__send-holder {
@@ -57,9 +60,7 @@
 
 .crasher__input-textarea-textbox {
   border: none;
-  border-radius: 50px;
   height: 18px;
   margin-top: 5px;
-  padding-top: 6px;
-  padding-left: 18px;
+  width: 85%;
 }

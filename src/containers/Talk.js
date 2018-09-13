@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import InputFooter from '../components/InputFooter';
 import LoadMore from '../components/LoadMore';
 import SendImageModal from '../components/SendImageModal';
+import userIcon from '../images/zero-crasher-user.svg';
 
 // Set data fetching limit.
 const LIMIT = 10;
@@ -234,13 +235,13 @@ class Talk extends Component {
               className="talk__message-container talk__message-container-right"
             >
               <p className="talk__message-container__text">{message.message}</p>
-              {/* <div className="talk__message-container__avatar-holder">
+              <div className="talk__message-container__avatar-holder">
                 <img
                   src={this.state.user.image_uri}
                   alt={this.state.user.nickname}
                   className="talk__message-container__avatar"
                 />
-              </div> */}
+              </div>
             </div>
           );
         } else if (message.user_id.toString() === this.props.match.params.id) {
@@ -252,7 +253,7 @@ class Talk extends Component {
             >
               <div className="talk__message-container__avatar-holder">
                 <img
-                  src={this.state.matching.image_uri}
+                  src={userIcon}
                   alt={this.state.matching.nickname}
                   className="talk__message-container__avatar"
                 />
