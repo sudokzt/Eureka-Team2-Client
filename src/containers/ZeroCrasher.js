@@ -265,8 +265,8 @@ class ZeroCrasher extends Component {
       );
     }
 
-    window.USER_ID = '1000';
-    window.USER_TOKEN = 'USERTOKEN1000';
+    // window.USER_ID = '1000';
+    // window.USER_TOKEN = 'USERTOKEN1000';
 
     console.log('[render()] USER_TOKEN:', window.USER_TOKEN);
 
