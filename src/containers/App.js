@@ -51,7 +51,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/zero-crasher/partner-info"
+              path="/zero-crasher/partner-info/:id"
               component={ZeroCrasherPartnerInfo}
             />
             <Route exact path="/zero-crasher/:id" component={ZeroCrasher} />
