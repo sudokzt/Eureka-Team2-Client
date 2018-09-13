@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import './InputFooter.css';
+import './ZeroCrasherInputFooter.css';
 
-class InputFooter extends Component {
+class ZeroCrasherInputFooter extends Component {
   state = {
     inputText: ''
   };
@@ -26,23 +26,8 @@ class InputFooter extends Component {
     return (
       <div className="footer">
         <form className="message-form" onSubmit={this.handleSubmit}>
-          <div className="message-form__item message-form__gallery-holder">
-            <input
-              type="button"
-              value=""
-              className="talk-footer__icon-btn talk-footer__icon-btn__camera"
-              onClick={this.props.onOpenGallery}
-            />
-            <input
-              type="button"
-              value=""
-              className="talk-footer__icon-btn talk-footer__icon-btn__gallery"
-              onClick={this.props.onOpenGallery}
-            />
-          </div>
           <div className="message-form__item message-form__input-holder">
-            <input
-              type="textarea"
+            <textarea
               onChange={this.handleInputChange}
               value={this.state.inputText}
               placeholder="Write something..."
@@ -63,4 +48,4 @@ class InputFooter extends Component {
   }
 }
 
-export default InputFooter;
+export default ZeroCrasherInputFooter;

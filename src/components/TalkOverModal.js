@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import './TalkOverModal.css';
+import likeIcon from '../images/like-btn-white.svg';
 
 class TalkOverModal extends Component {
   state = {
@@ -17,17 +18,30 @@ class TalkOverModal extends Component {
     let likeButton = null;
     if (!this.state.isLiked) {
       likeButton = (
-        <button className="text-btn single-line-btn" onClick={this.handleLike}>
-          いいね！
+        <button
+          className="talk-over-modal__like-button"
+          onClick={this.handleLike}
+        >
+          <img
+            src={likeIcon}
+            alt="Like Icon"
+            className="inline-icon talk-ver-modal__inline-icon"
+          />
+          <span>いいね！</span>
         </button>
       );
     } else {
       likeButton = (
         <button
-          className="text-btn single-line-btn minor-btn"
+          className="talk-over-modal__like-button talk-over-modal__liked-button"
           onClick={this.handleLike}
         >
-          いいねしました
+          <img
+            src={likeIcon}
+            alt="Like Icon"
+            className="inline-icon talk-ver-modal__inline-icon"
+          />
+          <span>いいね！しました</span>
         </button>
       );
     }
@@ -35,14 +49,20 @@ class TalkOverModal extends Component {
     return (
       <div className="modal" id="talkOverModal" style={{ display: 'block' }}>
         <div className="modal-content-fullscreen fail-to-match__modal">
-          <h2>終了しました</h2>
-          <p>相手が気になった場合は「いいね」を押してみましょう！</p>
-          {likeButton}
-          <Link to="/search">
-            <button className="text-btn single-line-btn minor-btn">
-              サーチ画面に戻る
-            </button>
-          </Link>
+          <h3>タイムアップ</h3>
+          <h1 className="talk-over-modal__counter">0:00</h1>
+          <p>
+            Nipperさんともっと話してみたい！と感じたらいいね！を押しましょう！
+          </p>
+          <div className="time-up-modal__button-contaier">
+            {likeButton}
+            <Link
+              to="/zero-crasher/tutorial"
+              className="talk-over-modal__home-link"
+            >
+              ホームに戻る
+            </Link>
+          </div>
         </div>
       </div>
     );
