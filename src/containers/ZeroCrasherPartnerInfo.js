@@ -28,7 +28,7 @@ class ZeroCrasherPartnerInfo extends Component {
     fetch(
       `https://si-2018-second-half-2.eure.jp/api/1.0/users/${
         this.props.match.params.id
-      }?token=USERTOKEN500`
+      }?token=${window.USER_TOKEN}`
     )
       .then(response => response.json())
       .then(data => {

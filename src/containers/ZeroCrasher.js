@@ -36,8 +36,9 @@ class ZeroCrasher extends Component {
     if (window.USER_TOKEN !== null) {
       const currentDate = new Date();
       let threeMinAgoDate = new Date();
-      threeMinAgoDate.setTime(currentDate.getTime() - 1000 * 60 * 3);
+      threeMinAgoDate.setTime(currentDate.getTime() - 1000 * 181);
       const threeMinAgoDateISO = threeMinAgoDate.toISOString();
+      console.log('Get messages date:', threeMinAgoDateISO);
       fetch(
         `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch/messages/${
           this.props.match.params.id
@@ -54,9 +55,15 @@ class ZeroCrasher extends Component {
         .then(response => response.json())
         .then(data => {
           if (data.length > this.state.messages.length) {
-            this.setState({
-              messages: data
-            });
+            this.setState(
+              {
+                messages: data
+              },
+              () => {
+                window.scrollTo(0, document.body.scrollHeight);
+                console.log('Scrolled to bottom.');
+              }
+            );
             console.log(data.length, this.state.messages.length);
           }
 
@@ -100,7 +107,7 @@ class ZeroCrasher extends Component {
         ).then(response => response.json())
       ])
         .then(data => {
-          console.log(data[1]);
+          // console.log(data[1]);
 
           this.setState(
             {
