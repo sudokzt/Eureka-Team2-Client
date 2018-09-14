@@ -22,6 +22,7 @@ class ZeroCrasherLoading extends Component {
 
   // 30second timer
   countup = () => {
+    console.log(this.state.timeLimit);
     if (this.state.canceledFlag === true) {
       this.props.history.push('/zero-crasher/tutorial');
       return;
@@ -99,24 +100,38 @@ class ZeroCrasherLoading extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <Header currentPage="ランダムトーク" />
-        <div className="loading-indicator">
-          <div className="loader" />
-          <h4>マッチング相手を探しています</h4>
-          <div className="crasher-loading__button-holder">
-            <button
-              className="crasher-loading__cancle-button"
-              onClick={this.handleCancel}
-            >
-              キャンセル
-            </button>
+    if (this.state.timeLimit <= 0) {
+      return (
+        <div>
+          <Header currentPage="ランダムトーク" />
+          <div className="loading-indicator">
+            <div className="loader" />
+            <h4>マッチング相手を探しています</h4>
+            <div className="crasher-loading__button-holder">
+              <FailtoMatchModal />
+            </div>
           </div>
         </div>
-        <FailtoMatchModal />
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div>
+          <Header currentPage="ランダムトーク" />
+          <div className="loading-indicator">
+            <div className="loader" />
+            <h4>マッチング相手を探しています</h4>
+            <div className="crasher-loading__button-holder">
+              <button
+                className="crasher-loading__cancle-button"
+                onClick={this.handleCancel}
+              >
+                キャンセル
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 }
 

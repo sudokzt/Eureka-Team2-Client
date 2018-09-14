@@ -6,7 +6,7 @@ import './FailtoMatchModal.css';
 class FailtoMatchModal extends Component {
   render() {
     return (
-      <div className="modal" id="failtoMatchModal" style={{ display: 'none' }}>
+      <div className="modal" id="failtoMatchModal" style={{ display: 'block' }}>
         <div className="modal-content-fullscreen fail-to-match__modal">
           <h2>マッチングできませんでした。</h2>
           <button className="text-btn single-line-btn">再ロードする</button>
