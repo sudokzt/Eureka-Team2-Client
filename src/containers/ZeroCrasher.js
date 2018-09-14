@@ -5,14 +5,14 @@ import './ZeroCrasher.css';
 import userIcon from '../images/zero-crasher-user.svg';
 import Header from '../components/Header';
 import ZeroCrasherInputFooter from '../components/ZeroCrasherInputFooter';
-import LoadMore from '../components/LoadMore';
+// import LoadMore from '../components/LoadMore';
 import SendImageModal from '../components/SendImageModal';
 import TalkOverModal from '../components/TalkOverModal';
 import ZeroCrasherBanner from '../components/ZeroCrasherBanner';
 import { withRouter } from 'react-router';
 
 // Set data fetching limit.
-const LIMIT = 10;
+const LIMIT = 1000;
 
 class ZeroCrasher extends Component {
   state = {
@@ -34,10 +34,16 @@ class ZeroCrasher extends Component {
 
     // Get messages every 1 sec.
     if (window.USER_TOKEN !== null) {
+      const currentDate = new Date();
+      let threeMinAgoDate = new Date();
+      threeMinAgoDate.setTime(currentDate.getTime() - 1000 * 60 * 3);
+      const threeMinAgoDateISO = threeMinAgoDate.toISOString();
       fetch(
         `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch/messages/${
           this.props.match.params.id
-        }?token=${window.USER_TOKEN}&limit=${this.state.currentLimit}`,
+        }?token=${
+          window.USER_TOKEN
+        }&&oldest=${threeMinAgoDateISO}&limit=${LIMIT}`,
         {
           method: 'GET',
           headers: {
@@ -162,44 +168,44 @@ class ZeroCrasher extends Component {
     );
   };
 
-  handleLoadMore = () => {
-    // Get more data only when there are new data to fetch.
-    if (!this.state.loadedAll) {
-      const moreLimit = (this.state.loadCounter + 2) * LIMIT;
+  // handleLoadMore = () => {
+  //   // Get more data only when there are new data to fetch.
+  //   if (!this.state.loadedAll) {
+  //     const moreLimit = (this.state.loadCounter + 2) * LIMIT;
 
-      fetch(
-        `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch/messages/${
-          this.props.match.params.id
-        }?token=${window.USER_TOKEN}&limit=${moreLimit}`,
-        {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json'
-          }
-        }
-      )
-        .then(response => response.json())
-        .then(data => {
-          this.setState({
-            messages: data,
-            loadCounter: this.state.loadCounter + 1,
-            loadMoreClicked: true,
-            currentLimit: moreLimit
-          });
+  //     fetch(
+  //       `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch/messages/${
+  //         this.props.match.params.id
+  //       }?token=${window.USER_TOKEN}&limit=${moreLimit}`,
+  //       {
+  //         method: 'GET',
+  //         headers: {
+  //           Accept: 'application/json'
+  //         }
+  //       }
+  //     )
+  //       .then(response => response.json())
+  //       .then(data => {
+  //         this.setState({
+  //           messages: data,
+  //           loadCounter: this.state.loadCounter + 1,
+  //           loadMoreClicked: true,
+  //           currentLimit: moreLimit
+  //         });
 
-          // Update the loadedAll flag to true if the currentLimit
-          // is not smaller than the actual data we can fetch.
-          if (data.length < this.state.currentLimit) {
-            this.setState({ loadedAll: true });
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    } else {
-      console.log('No more data to load.');
-    }
-  };
+  //         // Update the loadedAll flag to true if the currentLimit
+  //         // is not smaller than the actual data we can fetch.
+  //         if (data.length < this.state.currentLimit) {
+  //           this.setState({ loadedAll: true });
+  //         }
+  //       })
+  //       .catch(error => {
+  //         console.log(error);
+  //       });
+  //   } else {
+  //     console.log('No more data to load.');
+  //   }
+  // };
 
   render() {
     let redirect = null;
@@ -256,16 +262,19 @@ class ZeroCrasher extends Component {
         <div>
           {/* {redirect} */}
           <Header currentPage="ZeroCrasher" timeLimit={this.state.timeLimit} />
-          <TalkOverModal userID={this.props.match.params.id} />
+          <TalkOverModal
+            userID={this.props.match.params.id}
+            userName={this.state.matching.nickname}
+          />
           <div className="under-header above-footer">
             <div className="crasher__message-holder">
               <ZeroCrasherBanner userProfile={this.state.matching} />
-              <LoadMore
+              {/* <LoadMore
                 onLoadMore={this.handleLoadMore}
                 fetchStatus={
                   this.state.messages !== null && !this.state.loadedAll
                 }
-              />
+              /> */}
               <div className="crasher__messages-text-holder">{messages}</div>
             </div>
           </div>
@@ -290,12 +299,12 @@ class ZeroCrasher extends Component {
         <div className="under-header above-footer">
           <ZeroCrasherBanner userProfile={this.state.matching} />
           <div className="crasher__message-holder">
-            <LoadMore
+            {/* <LoadMore
               onLoadMore={this.handleLoadMore}
               fetchStatus={
                 this.state.messages !== null && !this.state.loadedAll
               }
-            />
+            /> */}
             <div className="crasher__messages-text-holder">{messages}</div>
           </div>
         </div>
