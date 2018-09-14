@@ -57,7 +57,7 @@ class ZeroCrasherLoading extends Component {
         // ボタン押した直後にマッチングをしたら
         if (data.user_id) {
           //　返ってきたpartne_idが自分と同じだったら返ってきたオブジェクトのpartner_idとuser_idを入れ替える
-          if (data.partner_id === window.USER_ID) {
+          if (data.partner_id.toString() === window.USER_ID) {
             let tmp_id = data.partner_id;
             data.partner_id = data.user_id;
             data.user_id = tmp_id;
@@ -84,7 +84,7 @@ class ZeroCrasherLoading extends Component {
         console.log(data);
         if (data.user_id) {
           //　返ってきたpartne_idが自分と同じだったら返ってきたオブジェクトのpartner_idとuser_idを入れ替える
-          if (data.partner_id === window.USER_ID) {
+          if (data.partner_id.toString() === window.USER_ID) {
             let tmp_id = data.partner_id;
             data.partner_id = data.user_id;
             data.user_id = tmp_id;
