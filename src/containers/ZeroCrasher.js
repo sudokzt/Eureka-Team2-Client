@@ -15,7 +15,6 @@ const LIMIT = 10;
 
 class ZeroCrasher extends Component {
   state = {
-    user: null,
     matching: null,
     messages: null,
     loadCounter: 0,
@@ -69,24 +68,37 @@ class ZeroCrasher extends Component {
     // console.log('[componentDidMount()] USER_TOKEN:', window.USER_TOKEN);
 
     if (window.USER_TOKEN !== null) {
-      fetch(
-        `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch/messages/${
-          this.props.match.params.id
-        }?token=${window.USER_TOKEN}&limit=${LIMIT}`,
-        {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json'
+      Promise.all([
+        fetch(
+          `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch/messages/${
+            this.props.match.params.id
+          }?token=${window.USER_TOKEN}&limit=${LIMIT}`,
+          {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json'
+            }
           }
-        }
-      )
-        .then(response => response.json())
+        ).then(response => response.json()),
+        fetch(
+          `https://si-2018-second-half-2.eure.jp/api/1.0/users/${
+            this.props.match.params.id
+          }?token=${window.USER_TOKEN}`,
+          {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json'
+            }
+          }
+        ).then(response => response.json())
+      ])
         .then(data => {
-          // console.log(data);
+          console.log(data[1]);
 
           this.setState(
             {
-              messages: data
+              messages: data[0],
+              matching: data[1]
             },
             () => {
               window.scrollTo(0, document.body.scrollHeight);
@@ -94,7 +106,7 @@ class ZeroCrasher extends Component {
             }
           );
 
-          if (data.length === 0 || data.length < LIMIT) {
+          if (data[0].length === 0 || data[0].length < LIMIT) {
             this.setState({ loadedAll: true });
           }
         })
@@ -246,7 +258,7 @@ class ZeroCrasher extends Component {
           <TalkOverModal userID={this.props.match.params.id} />
           <div className="under-header above-footer">
             <div className="crasher__message-holder">
-              <ZeroCrasherBanner />
+              <ZeroCrasherBanner userProfile={this.state.matching} />
               <LoadMore
                 onLoadMore={this.handleLoadMore}
                 fetchStatus={
@@ -265,8 +277,8 @@ class ZeroCrasher extends Component {
       );
     }
 
-    // window.USER_ID = '1000';
-    // window.USER_TOKEN = 'USERTOKEN1000';
+    // window.USER_ID = "1000";
+    // window.USER_TOKEN = "USERTOKEN1000";
 
     // console.log('[render()] USER_TOKEN:', window.USER_TOKEN);
 
@@ -275,7 +287,7 @@ class ZeroCrasher extends Component {
         {/* {redirect} */}
         <Header currentPage="ZeroCrasher" timeLimit={this.state.timeLimit} />
         <div className="under-header above-footer">
-          <ZeroCrasherBanner />
+          <ZeroCrasherBanner userProfile={this.state.matching} />
           <div className="crasher__message-holder">
             <LoadMore
               onLoadMore={this.handleLoadMore}
