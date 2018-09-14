@@ -45,9 +45,7 @@ class ZeroCrasher extends Component {
       fetch(
         `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch/messages/${
           this.props.match.params.id
-        }?token=${window.USER_TOKEN}&oldest=${
-          this.state.startingTime
-        }&limit=${LIMIT}`,
+        }?token=${window.USER_TOKEN}&limit=${LIMIT}`,
         {
           method: 'GET',
           headers: {
@@ -57,18 +55,18 @@ class ZeroCrasher extends Component {
       )
         .then(response => response.json())
         .then(data => {
-          if (data.length > this.state.messages.length) {
-            this.setState(
-              {
-                messages: data
-              },
-              () => {
-                window.scrollTo(0, document.body.scrollHeight);
-                console.log('Scrolled to bottom.');
-              }
-            );
-            console.log(data.length, this.state.messages.length);
-          }
+          // if (data.length > this.state.messages.length) {
+          this.setState(
+            {
+              messages: data
+            },
+            () => {
+              window.scrollTo(0, document.body.scrollHeight);
+              // console.log('Scrolled to bottom.');
+            }
+          );
+          // console.log(data.length, this.state.messages.length);
+          // }
 
           if (data.length === 0 || data.length < LIMIT) {
             this.setState({ loadedAll: true });
