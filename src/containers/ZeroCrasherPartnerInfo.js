@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 
 import './ZeroCrasherPartnerInfo.css';
 import Header from '../components/Header';
@@ -6,6 +7,27 @@ import heartIcon from '../images/heart.svg';
 import userIcon from '../images/zero-crasher-user.svg';
 
 class ZeroCrasherPartnerInfo extends Component {
+  state = {
+    timeLimit: 5,
+    matchFlag: false
+  };
+
+  // 5second timer
+  countup = () => {
+    if (this.state.timeLimit === 0) {
+      this.props.history.push('/zero-crasher/1000');
+      return;
+    }
+    setTimeout(this.countup, 1000);
+    this.setState({
+      timeLimit: this.state.timeLimit - 1
+    });
+  };
+
+  componentDidMount = () => {
+    this.countup();
+  };
+
   render() {
     return (
       <div className="under-header">
@@ -30,7 +52,11 @@ class ZeroCrasherPartnerInfo extends Component {
                   alt="User Icon"
                   className="crasher-info__common-points-guide-icon"
                 />
-                <span>Nipperさんとの共通点は<br />こちらです！</span>
+                <span>
+                  Nipperさんとの共通点は
+                  <br />
+                  こちらです！
+                </span>
               </div>
               <div className="crasher-info__common-points-item">
                 <span className="crasher-info__common-points-item-emphasize">
@@ -58,4 +84,4 @@ class ZeroCrasherPartnerInfo extends Component {
   }
 }
 
-export default ZeroCrasherPartnerInfo;
+export default withRouter(ZeroCrasherPartnerInfo);

@@ -8,6 +8,7 @@ import LoadMore from '../components/LoadMore';
 import SendImageModal from '../components/SendImageModal';
 import TalkOverModal from '../components/TalkOverModal';
 import ZeroCrasherBanner from '../components/ZeroCrasherBanner';
+import { withRouter } from 'react-router';
 
 // Set data fetching limit.
 const LIMIT = 10;
@@ -337,4 +338,4 @@ class ZeroCrasher extends Component {
   }
 }
 
-export default ZeroCrasher;
+export default withRouter(ZeroCrasher);
