@@ -15,7 +15,7 @@ class ZeroCrasherPartnerInfo extends Component {
   // 5second timer
   countup = () => {
     if (this.state.timeLimit === 0) {
-      this.props.history.push('/zero-crasher/1000');
+      this.props.history.push(`/zero-crasher/${this.props.match.params.id}`);
       return;
     }
     setTimeout(this.countup, 1000);
@@ -28,7 +28,7 @@ class ZeroCrasherPartnerInfo extends Component {
     fetch(
       `https://si-2018-second-half-2.eure.jp/api/1.0/users/${
         this.props.match.params.id
-      }?token=USERTOKEN1001`
+      }?token=USERTOKEN1500`
     )
       .then(response => response.json())
       .then(data => {

@@ -40,7 +40,7 @@ class ZeroCrasherLoading extends Component {
   // 画面ロード時に相性トーク検索リクエストを行う
   handlePostMatching = () => {
     fetch(
-      `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch?token=USERTOKEN1001`,
+      `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch?token=USERTOKEN1500`,
       {
         method: 'POST',
         mode: 'cors',
@@ -55,7 +55,7 @@ class ZeroCrasherLoading extends Component {
         // ボタン押した直後にマッチングをしたら
         if (data.user_id) {
           //　返ってきたpartne_idが自分と同じだったら返ってきたオブジェクトのpartner_idとuser_idを入れ替える
-          if (data.partner_id === 1001) {
+          if (data.partner_id === 1500) {
             let tmp_id = data.partner_id;
             data.partner_id = data.user_id;
             data.user_id = tmp_id;
@@ -72,20 +72,23 @@ class ZeroCrasherLoading extends Component {
   // マッチングしたかどうかを確かめる
   handleGetMatching = () => {
     fetch(
-      `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch?token=USERTOKEN1001`
+      `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch?token=USERTOKEN1500`
     )
       .then(response => response.json())
       .then(data => {
         // 5秒ごとにAPIを叩いてマッチングしたら
+        console.log(data);
         if (data.user_id) {
           //　返ってきたpartne_idが自分と同じだったら返ってきたオブジェクトのpartner_idとuser_idを入れ替える
-          if (data.partner_id === 1001) {
+          if (data.partner_id === 1500) {
             let tmp_id = data.partner_id;
             data.partner_id = data.user_id;
             data.user_id = tmp_id;
           }
           this.setState({ matchFlag: true });
-          this.props.history.push('/zero-crasher/partner-info/1000');
+          this.props.history.push(
+            `/zero-crasher/partner-info/${data.partner_id}`
+          );
         }
         this.setState({ data: data });
       })
