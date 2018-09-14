@@ -79,14 +79,15 @@ class Login extends Component {
               type="text"
               onChange={this.handleInputChange}
               value={this.state.loginID}
-              placeholder="Type user ID here..."
+              // placeholder="Type user ID here..."
+              placeholder="ユーザーIDを入力してください"
               className="input-text login__input-text"
               required
             />
             <input
               type="button"
               onClick={this.handleSubmit}
-              value="Log in"
+              value="ログイン"
               className="btn text-btn login__text-btn"
             />
           </form>
