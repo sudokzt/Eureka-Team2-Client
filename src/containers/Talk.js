@@ -9,7 +9,7 @@ import SendImageModal from '../components/SendImageModal';
 import userIcon from '../images/zero-crasher-user.svg';
 
 // Set data fetching limit.
-const LIMIT = 10;
+const LIMIT = 1000;
 
 class Talk extends Component {
   state = {
@@ -19,6 +19,45 @@ class Talk extends Component {
     loadCounter: 0,
     loadedAll: false,
     currentLimit: 0
+  };
+
+  refreshMessage = () => {
+    setTimeout(this.refreshMessage, 1000);
+    if (window.USER_TOKEN !== null) {
+      fetch(
+        `https://si-2018-second-half-2.eure.jp/api/1.0/messages/${
+          this.props.match.params.id
+        }?token=${window.USER_TOKEN}&limit=${LIMIT}`,
+        {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json'
+          }
+        }
+      )
+        .then(response => response.json())
+        .then(data => {
+          if (data.length > this.state.messages.length) {
+            this.setState(
+              {
+                messages: data
+              },
+              () => {
+                window.scrollTo(0, document.body.scrollHeight);
+                console.log('Scrolled to bottom.');
+              }
+            );
+            console.log(data.length, this.state.messages.length);
+          }
+
+          if (data.length === 0 || data.length < LIMIT) {
+            this.setState({ loadedAll: true });
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   };
 
   // Get and user, matching partner and messages.
@@ -37,7 +76,7 @@ class Talk extends Component {
           }
         ).then(response => response.json()),
         fetch(
-          `https://si-2018-006.eure.jp/api/1.0/users/${
+          `https://si-2018-second-half-2.eure.jp/api/1.0/users/${
             this.props.match.params.id
           }?token=${window.USER_TOKEN}`,
           {
@@ -48,7 +87,7 @@ class Talk extends Component {
           }
         ).then(response => response.json()),
         fetch(
-          `https://si-2018-006.eure.jp/api/1.0/messages/${
+          `https://si-2018-second-half-2.eure.jp/api/1.0/messages/${
             this.props.match.params.id
           }?token=${window.USER_TOKEN}&limit=${LIMIT}`,
           {
@@ -61,10 +100,10 @@ class Talk extends Component {
       ])
         .then(data => {
           // Sort messages data by created_at.
-          data[2].sort(
-            (message1, message2) =>
-              message1.created_at > message2.created_at ? 1 : -1
-          );
+          // data[2].sort(
+          //   (message1, message2) =>
+          //     message1.created_at > message2.created_at ? 1 : -1
+          // );
 
           this.setState({
             user: data[0],
@@ -76,6 +115,7 @@ class Talk extends Component {
             this.setState({ loadedAll: true });
           }
         })
+        .then(() => this.refreshMessage())
         .catch(error => {
           console.log(error);
         });
@@ -100,7 +140,7 @@ class Talk extends Component {
 
     // Make a send (POST) request.
     fetch(
-      `https://si-2018-006.eure.jp/api/1.0/messages/${
+      `https://si-2018-second-half-2.eure.jp/api/1.0/messages/${
         this.props.match.params.id
       }`,
       {
@@ -120,56 +160,56 @@ class Talk extends Component {
     });
 
     const messages = this.state.messages;
-    messages.push(messageObj);
+    messages.unshift(messageObj);
     this.setState({
       messages: messages
     });
   };
 
   // Open the modal for sending image url (will be sent in Markdown).
-  handleOpenGallery = () => {
-    document.getElementById('sendImageModal').style.display = 'block';
-  };
+  // handleOpenGallery = () => {
+  //   document.getElementById('sendImageModal').style.display = 'block';
+  // };
 
-  handleSendImage = message => {
-    // Create a message object only for displaying.
-    const imageMessage = '![image](' + message + ')';
-    const currentDate = new Date();
-    const messageObj = {
-      created_at: currentDate.toISOString(),
-      message: imageMessage,
-      partner_id: this.props.match.params.id,
-      updated_at: currentDate.toISOString(),
-      user_id: window.USER_ID
-    };
+  // handleSendImage = message => {
+  //   // Create a message object only for displaying.
+  //   const imageMessage = '![image](' + message + ')';
+  //   const currentDate = new Date();
+  //   const messageObj = {
+  //     created_at: currentDate.toISOString(),
+  //     message: imageMessage,
+  //     partner_id: this.props.match.params.id,
+  //     updated_at: currentDate.toISOString(),
+  //     user_id: window.USER_ID
+  //   };
 
-    // Make a send (POST) request.
-    fetch(
-      `https://si-2018-006.eure.jp/api/1.0/messages/${
-        this.props.match.params.id
-      }`,
-      {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          token: window.USER_TOKEN,
-          message: imageMessage
-        })
-      }
-    ).catch(error => {
-      console.log(error);
-    });
+  //   // Make a send (POST) request.
+  //   fetch(
+  //     `https://si-2018-006.eure.jp/api/1.0/messages/${
+  //       this.props.match.params.id
+  //     }`,
+  //     {
+  //       method: 'POST',
+  //       mode: 'cors',
+  //       headers: {
+  //         Accept: 'application/json',
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({
+  //         token: window.USER_TOKEN,
+  //         message: imageMessage
+  //       })
+  //     }
+  //   ).catch(error => {
+  //     console.log(error);
+  //   });
 
-    const messages = this.state.messages;
-    messages.push(messageObj);
-    this.setState({
-      messages: messages
-    });
-  };
+  //   const messages = this.state.messages;
+  //   messages.push(messageObj);
+  //   this.setState({
+  //     messages: messages
+  //   });
+  // };
 
   handleLoadMore = () => {
     // Get more data only when there are new data to fetch.
@@ -190,10 +230,10 @@ class Talk extends Component {
         .then(response => response.json())
         .then(data => {
           // Sort data by created_at.
-          data.sort(
-            (message1, message2) =>
-              message1.created_at > message2.created_at ? 1 : -1
-          );
+          // data.sort(
+          //   (message1, message2) =>
+          //     message1.created_at > message2.created_at ? 1 : -1
+          // );
 
           this.setState({
             messages: data,
@@ -253,7 +293,7 @@ class Talk extends Component {
             >
               <div className="talk__message-container__avatar-holder">
                 <img
-                  src={userIcon}
+                  src={this.state.matching.image_uri}
                   alt={this.state.matching.nickname}
                   className="talk__message-container__avatar"
                 />
@@ -276,19 +316,21 @@ class Talk extends Component {
     return (
       <div>
         {redirect}
-        <Header currentPage="Talk" />
-        <div className="under-header above-footer talk__messages-holder">
-          <LoadMore
+        <Header currentPage="トーク" />
+        <div className="under-header above-footer">
+          {/* <LoadMore
             onLoadMore={this.handleLoadMore}
             fetchStatus={this.state.messages !== null && !this.state.loadedAll}
-          />
-          {messages}
+          /> */}
+          <div className="crasher__message-holder">
+            <div className="crasher__messages-text-holder">{messages}</div>
+          </div>
         </div>
         <InputFooter
           onSend={this.handleSend}
           onOpenGallery={this.handleOpenGallery}
         />
-        <SendImageModal onSend={this.handleSendImage} />
+        {/* <SendImageModal onSend={this.handleSendImage} /> */}
       </div>
     );
   }

@@ -4,7 +4,7 @@
   border: 0.7px solid #cfcfcf;
   display: flex;
   flex-direction: column;
-  height: 30%;
+  height: 40%;
   justify-content: center;
   margin-left: 10%;
   margin-right: 10%;
@@ -22,7 +22,7 @@
 
 .login__input-text {
   border-radius: 50px !important;
-  padding: 2% 5% !important;
+  padding: 12px 10px !important;
   width: 80%;
 }
 
@@ -33,5 +33,6 @@
   border: none;
   box-shadow: none !important;
   margin: 20px 0;
+  padding: 12px 10px !important;
   width: 90%;
 }

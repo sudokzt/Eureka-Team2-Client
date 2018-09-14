@@ -21,7 +21,8 @@ class ZeroCrasher extends Component {
     loadCounter: 0,
     loadedAll: false,
     currentLimit: LIMIT,
-    timeLimit: 180
+    timeLimit: 180,
+    startingTime: null
   };
 
   // 3 minute Timer
@@ -34,17 +35,19 @@ class ZeroCrasher extends Component {
 
     // Get messages every 1 sec.
     if (window.USER_TOKEN !== null) {
-      const currentDate = new Date();
+      let currentDate = new Date();
       let threeMinAgoDate = new Date();
-      threeMinAgoDate.setTime(currentDate.getTime() - 1000 * 60 * 4);
-      const threeMinAgoDateISO = threeMinAgoDate.toISOString();
-      console.log('Get messages date:', threeMinAgoDateISO);
+      threeMinAgoDate.setTime(
+        currentDate.getTime() - 1000 * 60 - 1000 * (180 - this.state.timeLimit)
+      );
+      let threeMinAgoDateISO = threeMinAgoDate.toISOString();
+      // console.log("Get messages date:", threeMinAgoDateISO);
       fetch(
         `https://si-2018-second-half-2.eure.jp/api/1.0/tempmatch/messages/${
           this.props.match.params.id
-        }?token=${
-          window.USER_TOKEN
-        }&&oldest=${threeMinAgoDateISO}&limit=${LIMIT}`,
+        }?token=${window.USER_TOKEN}&oldest=${
+          this.state.startingTime
+        }&limit=${LIMIT}`,
         {
           method: 'GET',
           headers: {
@@ -108,11 +111,15 @@ class ZeroCrasher extends Component {
       ])
         .then(data => {
           // console.log(data[1]);
+          let currentTime = new Date();
+          let advancedTime = new Date();
+          advancedTime.setTime(currentTime.getTime() - 1000 * 60);
 
           this.setState(
             {
               messages: data[0],
-              matching: data[1]
+              matching: data[1],
+              startingTime: advancedTime.toISOString()
             },
             () => {
               window.scrollTo(0, document.body.scrollHeight);

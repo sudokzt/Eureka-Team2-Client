@@ -56,7 +56,7 @@ class Matching extends Component {
       const offset = (this.state.loadCounter + 1) * LIMIT;
 
       fetch(
-        `https://si-2018-006.eure.jp/api/1.0/matches/?token=${
+        `https://si-2018-second-half-2.eure.jp/api/1.0/matches?token=${
           window.USER_TOKEN
         }&limit=${LIMIT}&offset=${offset}`,
         {
@@ -111,7 +111,7 @@ class Matching extends Component {
     return (
       <div>
         {redirect}
-        <Header currentPage="Matching" />
+        <Header currentPage="マッチング" />
         <div className="under-header above-footer">
           {matching}
           <LoadMore

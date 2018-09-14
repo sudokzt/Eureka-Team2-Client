@@ -24,33 +24,21 @@ class InputFooter extends Component {
 
   render() {
     return (
-      <div className="footer">
-        <form className="message-form" onSubmit={this.handleSubmit}>
-          <div className="message-form__item message-form__gallery-holder">
-            <input
-              type="button"
-              value=""
-              className="talk-footer__icon-btn talk-footer__icon-btn__camera"
-              onClick={this.props.onOpenGallery}
-            />
-            <input
-              type="button"
-              value=""
-              className="talk-footer__icon-btn talk-footer__icon-btn__gallery"
-              onClick={this.props.onOpenGallery}
-            />
-          </div>
-          <div className="message-form__item message-form__input-holder">
-            <input
-              type="textarea"
+      <div className="footer crasher__footer">
+        <form
+          className="message-form crasher__form-holder"
+          onSubmit={this.handleSubmit}
+        >
+          <div className="crasher__input-textarea">
+            <textarea
               onChange={this.handleInputChange}
               value={this.state.inputText}
-              placeholder="Write something..."
-              className="input-text message-form__input-text"
+              placeholder="メッセージを入力"
+              className="crasher__input-textarea-textbox"
               required
             />
           </div>
-          <div className="message-form__item message-form__send-holder">
+          <div className="crasher__send-holder">
             <input
               type="submit"
               value=""

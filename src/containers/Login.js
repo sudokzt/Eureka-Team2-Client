@@ -76,22 +76,22 @@ class Login extends Component {
     return (
       <div>
         {redirect}
-        <Header currentPage="Login" />
+        <Header currentPage="ログイン" />
         <div className="card login-card">
           <form onSubmit={this.handleSubmit}>
-            <h3 className="login__label">User ID:</h3>
+            <h3 className="login__label">ログインID:</h3>
             <input
               type="text"
               onChange={this.handleInputChange}
               value={this.state.loginID}
-              placeholder="Type user ID here..."
+              placeholder="ログインIDを入力"
               className="input-text login__input-text"
               required
             />
             <input
               type="button"
               onClick={this.handleSubmit}
-              value="Log in"
+              value="ログイン"
               className="btn text-btn login__text-btn"
             />
           </form>
