@@ -84,6 +84,7 @@ class ZeroCrasherLoading extends Component {
             data.user_id = tmp_id;
           }
           this.setState({ matchFlag: true });
+          this.props.history.push('/zero-crasher/partner-info/1000');
         }
         this.setState({ data: data });
       })
@@ -98,32 +99,24 @@ class ZeroCrasherLoading extends Component {
   };
 
   render() {
-    if (this.state.matchFlag === true) {
-      return (
-        <div>
-          <ZeroCrasherPartnerInfo />
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Header currentPage="ランダムトーク" />
-          <div className="loading-indicator">
-            <div className="loader" />
-            <h4>マッチング相手を探しています</h4>
-            <div className="crasher-loading__button-holder">
-              <button
-                className="crasher-loading__cancle-button"
-                onClick={this.handleCancel}
-              >
-                キャンセル
-              </button>
-            </div>
+    return (
+      <div>
+        <Header currentPage="ランダムトーク" />
+        <div className="loading-indicator">
+          <div className="loader" />
+          <h4>マッチング相手を探しています</h4>
+          <div className="crasher-loading__button-holder">
+            <button
+              className="crasher-loading__cancle-button"
+              onClick={this.handleCancel}
+            >
+              キャンセル
+            </button>
           </div>
-          <FailtoMatchModal />
         </div>
-      );
-    }
+        <FailtoMatchModal />
+      </div>
+    );
   }
 }
 

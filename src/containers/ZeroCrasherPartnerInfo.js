@@ -24,19 +24,35 @@ class ZeroCrasherPartnerInfo extends Component {
     });
   };
 
+  fetchPartnerInfo = () => {
+    fetch(
+      `https://si-2018-second-half-2.eure.jp/api/1.0/users/${
+        this.props.match.params.id
+      }?token=USERTOKEN1001`
+    )
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.setState({
+          matching: data
+        });
+      });
+  };
+
   componentDidMount = () => {
+    this.fetchPartnerInfo();
     this.countup();
   };
 
   render() {
+    if (!this.state.matching) return <div />;
     return (
       <div className="under-header">
         <Header currentPage="お相手の情報" />
         <div className="crasher-info__holder">
           <div className="crasher-info__guide-holder">
             <h2>
-              Nipperさんと
-              <br />
+              {this.state.matching.nickname} と<br />
               マッチしました！
             </h2>
           </div>
@@ -53,14 +69,15 @@ class ZeroCrasherPartnerInfo extends Component {
                   className="crasher-info__common-points-guide-icon"
                 />
                 <span>
-                  Nipperさんとの共通点は
+                  {this.state.matching.nickname}
+                  さんとの共通点は
                   <br />
                   こちらです！
                 </span>
               </div>
               <div className="crasher-info__common-points-item">
                 <span className="crasher-info__common-points-item-emphasize">
-                  東京
+                  {this.state.matching.residence_state}
                 </span>
                 住み
               </div>
