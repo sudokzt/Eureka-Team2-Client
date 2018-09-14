@@ -6,7 +6,7 @@ class ZeroCrasherBanner extends Component {
   render() {
     let residence = null;
     if (this.props.userProfile) {
-      console.log(this.props.userProfile);
+      // console.log(this.props.userProfile);
       residence = this.props.userProfile.residence_state;
     }
 

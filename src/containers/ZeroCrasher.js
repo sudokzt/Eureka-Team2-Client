@@ -36,7 +36,7 @@ class ZeroCrasher extends Component {
     if (window.USER_TOKEN !== null) {
       const currentDate = new Date();
       let threeMinAgoDate = new Date();
-      threeMinAgoDate.setTime(currentDate.getTime() - 1000 * 181);
+      threeMinAgoDate.setTime(currentDate.getTime() - 1000 * 60 * 4);
       const threeMinAgoDateISO = threeMinAgoDate.toISOString();
       console.log('Get messages date:', threeMinAgoDateISO);
       fetch(
