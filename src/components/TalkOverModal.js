@@ -76,7 +76,8 @@ class TalkOverModal extends Component {
           <h3>タイムアップ</h3>
           <h1 className="talk-over-modal__counter">0:00</h1>
           <p>
-            Nipperさんともっと話してみたい！
+            {this.props.userName}
+            さんともっと話してみたい！
             <br />
             と感じたらいいね！を押しましょう！
           </p>
