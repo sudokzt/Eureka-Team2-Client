@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
-import "./PartnerProfile.css";
-import Header from "../components/Header";
-import calculateAge from "../functions/calculateAge";
+import './PartnerProfile.css';
+import Header from '../components/Header';
+import calculateAge from '../functions/calculateAge';
 
 class PartnerProfile extends Component {
   state = {
@@ -15,7 +15,7 @@ class PartnerProfile extends Component {
   componentDidMount() {
     if (window.USER_TOKEN !== null) {
       fetch(
-        `https://si-2018-000.eure.jp/api/1.0/users/${
+        `https://si-2018-second-half-2.eure.jp/api/1.0/users/${
           this.props.match.params.id
         }?token=${window.USER_TOKEN}`
       )
@@ -33,13 +33,15 @@ class PartnerProfile extends Component {
     // Only send POST request if the button has not been clicked.
     if (!this.state.isLiked) {
       fetch(
-        `https://si-2018-006.eure.jp/api/1.0/likes/${this.state.partner.id}`,
+        `https://si-2018-second-half-2.eure.jp/api/1.0/likes/${
+          this.state.partner.id
+        }`,
         {
-          method: "POST",
-          mode: "cors",
+          method: 'POST',
+          mode: 'cors',
           headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             token: window.USER_TOKEN
@@ -58,7 +60,7 @@ class PartnerProfile extends Component {
     // Redirect to LOGIN page if use token is not provided.
     if (window.USER_TOKEN === null) {
       redirect = <Redirect to="/login" />;
-      console.log("Redirecting to Login...");
+      console.log('Redirecting to Login...');
     }
 
     let likeBtn = null;

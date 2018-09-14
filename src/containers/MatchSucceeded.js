@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
-import "./MatchSucceeded.css";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import heartIcon from "../images/heart.svg";
+import './MatchSucceeded.css';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import heartIcon from '../images/heart.svg';
 
 class MatchSucceeded extends Component {
   state = {
@@ -17,24 +17,24 @@ class MatchSucceeded extends Component {
     if (window.USER_TOKEN !== null) {
       Promise.all([
         fetch(
-          `https://si-2018-006.eure.jp/api/1.0/users/${window.USER_ID}?token=${
-            window.USER_TOKEN
-          }`,
+          `https://si-2018-second-half-2.eure.jp/api/1.0/users/${
+            window.USER_ID
+          }?token=${window.USER_TOKEN}`,
           {
-            method: "GET",
+            method: 'GET',
             headers: {
-              Accept: "application/json"
+              Accept: 'application/json'
             }
           }
         ).then(response => response.json()),
         fetch(
-          `https://si-2018-006.eure.jp/api/1.0/users/${
+          `https://si-2018-second-half-2.eure.jp/api/1.0/users/${
             this.props.match.params.id
           }?token=${window.USER_TOKEN}`,
           {
-            method: "GET",
+            method: 'GET',
             headers: {
-              Accept: "application/json"
+              Accept: 'application/json'
             }
           }
         ).then(response => response.json())
@@ -56,7 +56,7 @@ class MatchSucceeded extends Component {
     // Redirect to LOGIN page if use token is not provided.
     if (window.USER_TOKEN === null) {
       redirect = <Redirect to="/login" />;
-      console.log("Redirecting to login...");
+      console.log('Redirecting to login...');
     }
 
     let matchedUserImage = null;
@@ -70,7 +70,7 @@ class MatchSucceeded extends Component {
           className="match-result__img"
         />
       );
-      
+
       userImage = (
         <img
           src={this.state.user.image_uri}
@@ -81,7 +81,7 @@ class MatchSucceeded extends Component {
 
       buttons = (
         <div className="btn-holder-vertical">
-          <Link to={"/talk/" + this.state.matched.id}>
+          <Link to={'/talk/' + this.state.matched.id}>
             <button className="text-btn single-line-btn">Talk</button>
           </Link>
           <Link to="/approached">

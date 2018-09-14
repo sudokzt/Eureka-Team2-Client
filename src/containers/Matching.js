@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
-import Footer from "../components/Footer";
-import MatchingCards from "../components/MatchingCards/MatchingCards";
-import Header from "../components/Header";
-import LoadMore from "../components/LoadMore";
+import Footer from '../components/Footer';
+import MatchingCards from '../components/MatchingCards/MatchingCards';
+import Header from '../components/Header';
+import LoadMore from '../components/LoadMore';
 
 // Set data fetching limit.
 const LIMIT = 10;
@@ -20,13 +20,13 @@ class Matching extends Component {
   componentDidMount() {
     if (window.USER_TOKEN !== null) {
       fetch(
-        `https://si-2018-006.eure.jp/api/1.0/matches?token=${
+        `https://si-2018-second-half-2.eure.jp/api/1.0/matches?token=${
           window.USER_TOKEN
         }&limit=${LIMIT}&offset=0`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
-            Accept: "application/json"
+            Accept: 'application/json'
           }
         }
       )
@@ -60,9 +60,9 @@ class Matching extends Component {
           window.USER_TOKEN
         }&limit=${LIMIT}&offset=${offset}`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
-            Accept: "application/json"
+            Accept: 'application/json'
           }
         }
       )
@@ -87,7 +87,7 @@ class Matching extends Component {
           console.log(error);
         });
     } else {
-      console.log("No more data to load.");
+      console.log('No more data to load.');
     }
   };
 
@@ -96,7 +96,7 @@ class Matching extends Component {
     // Redirect to LOGIN page if use token is not provided.
     if (window.USER_TOKEN === null) {
       redirect = <Redirect to="/login" />;
-      console.log("Redirecting to Login...");
+      console.log('Redirecting to Login...');
     }
 
     let matching = <p>Loading...</p>;

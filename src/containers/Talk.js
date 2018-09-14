@@ -26,9 +26,9 @@ class Talk extends Component {
     if (window.USER_TOKEN !== null) {
       Promise.all([
         fetch(
-          `https://si-2018-006.eure.jp/api/1.0/users/${window.USER_ID}?token=${
-            window.USER_TOKEN
-          }`,
+          `https://si-2018-second-half-2.eure.jp/api/1.0/users/${
+            window.USER_ID
+          }?token=${window.USER_TOKEN}`,
           {
             method: 'GET',
             headers: {

@@ -21,7 +21,7 @@ class Search extends Component {
   componentDidMount() {
     if (window.USER_TOKEN !== null) {
       fetch(
-        `https://si-2018-006.eure.jp/api/1.0/users/?token=${
+        `https://si-2018-second-half-2.eure.jp/api/1.0/users/?token=${
           window.USER_TOKEN
         }&limit=${LIMIT}&offset=0`,
         {

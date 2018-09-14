@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
-import "./Approached.css";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import ApproachedCard from "../components/ApproachedCard/ApproachedCard";
-import likeBtn from "../images/like-btn-selected.svg";
-import dislikeBtn from "../images/dislike-btn.svg";
+import './Approached.css';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import ApproachedCard from '../components/ApproachedCard/ApproachedCard';
+import likeBtn from '../images/like-btn-selected.svg';
+import dislikeBtn from '../images/dislike-btn.svg';
 
 class Approached extends Component {
   state = {
@@ -17,13 +17,13 @@ class Approached extends Component {
   componentDidMount() {
     if (window.USER_TOKEN !== null) {
       fetch(
-        `https://si-2018-006.eure.jp/api/1.0/likes?token=${
+        `https://si-2018-second-half-2.eure.jp/api/1.0/likes?token=${
           window.USER_TOKEN
         }&limit=1000&offset=0`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
-            Accept: "application/json"
+            Accept: 'application/json'
           }
         }
       )
@@ -40,15 +40,15 @@ class Approached extends Component {
   // Make a like (POST) request.
   handleLike = () => {
     fetch(
-      `https://si-2018-006.eure.jp/api/1.0/likes/${
+      `https://si-2018-second-half-2.eure.jp/api/1.0/likes/${
         this.state.approached[0].id
       }`,
       {
-        method: "POST",
-        mode: "cors",
+        method: 'POST',
+        mode: 'cors',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           token: window.USER_TOKEN
@@ -75,7 +75,7 @@ class Approached extends Component {
     // Redirect to LOGIN page if user token is not provided.
     if (window.USER_TOKEN === null) {
       redirect = <Redirect to="/login" />;
-      console.log("Redirecting to Login...");
+      console.log('Redirecting to Login...');
     }
 
     let approachedCard = <p>Loading...</p>;
@@ -93,7 +93,7 @@ class Approached extends Component {
               <img src={dislikeBtn} alt="dislike" className="icon-btn" />
             </button>
             <button className="approached__btn" onClick={this.handleLike}>
-              <Link to={"/match-succeeded/" + this.state.approached[0].id}>
+              <Link to={'/match-succeeded/' + this.state.approached[0].id}>
                 <img src={likeBtn} alt="like" className="icon-btn" />
               </Link>
             </button>
