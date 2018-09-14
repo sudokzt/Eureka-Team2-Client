@@ -4,12 +4,12 @@
   border: 0.7px solid #cfcfcf;
   display: flex;
   flex-direction: column;
-  height: 30%;
+  height: 50%;
   justify-content: center;
   margin-left: 10%;
   margin-right: 10%;
   position: absolute;
-  top: 30%;
+  top: 25%;
   width: 80%;
 }
 
@@ -22,16 +22,19 @@
 
 .login__input-text {
   border-radius: 50px !important;
-  padding: 2% 5% !important;
+  /* padding: 2% 5% !important; */
+  padding:16px !important;
   width: 80%;
 }
 
 .login__text-btn {
   background-color: #75d0d4 !important;
   border: none !important;
-  border-radius: 50px !important;
+  border-radius: 100px !important;
   border: none;
   box-shadow: none !important;
-  margin: 20px 0;
-  width: 90%;
+  margin: 24px 0;
+  width: 85%;
+  padding: 12px !important;
+  font-size: 19px;
 }
